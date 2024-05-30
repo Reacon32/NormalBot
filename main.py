@@ -12,8 +12,6 @@ dp = Dispatcher(bot)
 async def start(message: types.Message):
     await message.answer('Нейронка импорто-замещения')
 
-message = input('Введите Ваш запрос')
-
 def generate_image(prompt_text):
     prompt = {
         "modelUri": "art://b1gok529us99nbhikhqq/yandex-art/latest",
