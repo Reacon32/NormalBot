@@ -10,7 +10,7 @@ dp = Dispatcher(bot)
 
 @dp.message_handler(commands= 'start')
 async def start(message: types.Message):
-    await message.answer('Нейронка импорто-замещения')
+    await message.answer('Привет! Я нейронка импорто-замещения, которая может генироривоть изображения')
 
 def generate_image(prompt_text):
     prompt = {
