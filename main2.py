@@ -7,6 +7,15 @@ Api = '7397505038:AAEybXzkntQkyry2d63MPOBH8VC9Gz53DYU'
 bot = Bot(token= Api)
 dp = Dispatcher(bot)
 
+async def set_commands(bot: Bot):
+    commands = [
+        types.BotCommand(command='/start', description='Команда запуска бота'),
+        types.BotCommand(command='/sovet', description='Команда для получения совета'),
+        types.BotCommand(command='/generate_image', description='Команда для генерации изображения'),
+    ]
+
+    await bot.set_my_commands(commands)
+
 @dp.message_handler(commands= 'start')
 async def start(message: types.Message):
     await message.answer('Привет! Я нейронка импорто-замещения, которая может генироривоть изображения, а также давать советы')
@@ -35,3 +44,12 @@ async def handle_message(message: types.Message):
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates= True)
+
+async def on_startup(dispatcher):
+    await set_commands(dispatcher.bot)
+
+if __name__ == '__main__':
+    executor.start_polling(dp, skip_updates= True, on_startup= on_startup)
+
+
+
